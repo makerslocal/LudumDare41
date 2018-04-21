@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		raceTime = Time.timeSinceLevelLoad;
-		timerText.text = "" + (int)(raceTime / 60f) + "\'" + (raceTime % 60) + "\"";
+		timerText.text = "" + (int)(raceTime / 60f) 
+			+ "\'" + (int)(raceTime % 60) 
+			+ "\"" + (int)((raceTime * 100) % 100);
 	}
 }

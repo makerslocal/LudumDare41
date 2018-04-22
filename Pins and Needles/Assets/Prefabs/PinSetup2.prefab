@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4541980430089612}
+  - component: {fileID: 114011513705591840}
   m_Layer: 0
   m_Name: PinSetup2
   m_TagString: Untagged
@@ -1229,6 +1230,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114011513705591840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089851193241564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a0d74e48fc1df4eb7bb5a0f382c569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114106177131994686
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour {
 			yield break; //for debug purposes.
 
 		//GameObject.Find ("Car").GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
+		GameObject.Find("RollSound").GetComponent<AudioSource>().Play();
 
 		isRaceCompleted = true;
 

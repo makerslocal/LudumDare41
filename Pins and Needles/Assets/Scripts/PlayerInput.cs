@@ -18,5 +18,6 @@ public class PlayerInput : MonoBehaviour {
 			isPedalDown: Input.GetKey("w") || Input.GetKey("up") || Input.GetKey("s") || Input.GetKey("down"),
 			isReverse: Input.GetKey("s") || Input.GetKey("down")
 		);
+		car.Turn(Input.GetAxis("Horizontal"));      
 	}
 }

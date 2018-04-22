@@ -57,7 +57,7 @@ public class LevelGenerator : MonoBehaviour {
 				                      new Vector3 (offset, 0, nextZPos),
 				                      Quaternion.identity
 			                      );
-			fragment.GetComponent<Transform> ().parent = GetComponent<Transform> ();
+			fragment.GetComponent<Transform> ().parent = GameObject.Find("Structure").GetComponent<Transform>();
 			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
 		}
 

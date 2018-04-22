@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class GameController : MonoBehaviour {
 	[HideInInspector]
 	public bool isRaceCompleted;
 
-	public float timeAfterGame = 10f;
+	public float timeAfterGame;
 	public Text timerText;
 	public Text scoreText;
     
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour {
 		if (isRaceCompleted)
 			yield break; //for debug purposes.
 
-		//GameObject.Find ("Car").GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
+		GameObject.Find ("Car").GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
 		GameObject.Find("RollSound").GetComponent<AudioSource>().Play();
 
 		isRaceCompleted = true;
@@ -82,6 +83,11 @@ public class GameController : MonoBehaviour {
 		
 
 		scoreText.enabled = true;
+		Time.timeScale = 0f;
+
+		yield return new WaitForSecondsRealtime (5f);
+
+		SceneManager.LoadScene ("prototype-001");
 
 	}
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PinBehavior : MonoBehaviour {
 
+	private const int FALL_ANGLE = 11;
 	private GameController gameController;
 
-	private void Start()
+	private void Awake()
 	{
 		gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
@@ -18,6 +19,7 @@ public class PinBehavior : MonoBehaviour {
 	}
 
 	public bool IsStanding () {
-		return (GetComponent<Transform>().rotation.x >= -79 || GetComponent<Transform>().rotation.x <= -101);
+		return (GetComponent<Transform>().rotation.x >= -90 + FALL_ANGLE 
+		        || GetComponent<Transform>().rotation.x <= -90 - FALL_ANGLE);
 	}   
 }

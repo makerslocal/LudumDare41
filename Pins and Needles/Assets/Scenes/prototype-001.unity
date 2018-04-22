@@ -601,8 +601,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.612175, y: 6.1865, z: 5}
-  m_Center: {x: -0.039103508, y: -0.6843167, z: 2}
+  m_Size: {x: 3, y: 8, z: 5}
+  m_Center: {x: 0, y: -0.6, z: 2}
 --- !u!1 &926667370
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,9 +837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60089a50cb8a5491286972283b9d96b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeedMagnitude: 100
-  maxAccelerationMagnitude: 18
-  jerkMagnitude: 3
+  maxSpeedMagnitude: 500
+  maxAccelerationMagnitude: 50
+  jerkMagnitude: 20
   turnRate: 40
 --- !u!54 &1571693380
 Rigidbody:
@@ -854,7 +854,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &1625990009
 Prefab:
@@ -873,7 +873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 800
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -898,6 +898,18 @@ Prefab:
     - target: {fileID: 100000, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64fc91c52532ba74a8bab91bbaf66ea3, type: 3}

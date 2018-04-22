@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour {
 	public GameObject MapFragment;
 	public GameObject PinSetup;
 	public GameObject Bumper;
+	public GameObject Ball;
 
 	double[] segmentOffsets = {
 		0.0,
@@ -60,7 +61,14 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		//Generate our bowling lane, which is just a straight runway riffing off the end segment position
+		//So where is the center of the lane?
 		float laneX = (float) (segmentOffsets [segmentOffsets.Length - 1]);
+
+		//Add the ball
+		GameObject ball = Instantiate(Ball, new Vector3(laneX, 2, nextZPos), Quaternion.identity);
+		ball.GetComponent<Transform> ().parent = GameObject.Find ("Units").GetComponent<Transform> ();
+			
+		//Add the lane floor
 		for (int i = 0; i < 15; i++) {
 			GameObject fragment = Instantiate (MapFragment, new Vector3 (laneX, 0, nextZPos), Quaternion.identity);
 			fragment.GetComponent<Transform> ().parent = GameObject.Find ("Structure").GetComponent<Transform> ();

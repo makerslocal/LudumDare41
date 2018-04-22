@@ -12,6 +12,7 @@ public class CarBehavior : MonoBehaviour {
 	private float speed;
 	private float acceleration;
 	private float horizontalAxis;
+	private bool isInTheWeeds;
 
 	private Rigidbody rb;
 
@@ -20,6 +21,8 @@ public class CarBehavior : MonoBehaviour {
 		speed = 0f;
 		acceleration = 0f;
 		horizontalAxis = 0f;
+
+		isInTheWeeds = false;
 
 		rb = GetComponent<Rigidbody>();
 	}
@@ -31,33 +34,58 @@ public class CarBehavior : MonoBehaviour {
 	private void FixedUpdate()
 	{      
 		rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
+
+		if (rb.velocity.magnitude > maxSpeedMagnitude)
+			rb.velocity = rb.velocity.normalized * maxSpeedMagnitude;
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+		if (collision.collider.gameObject.CompareTag("Weeds")){
+			isInTheWeeds = true;	
+		}
+	}
+    private void OnCollisionExit(Collision collision)
+    {
+		if (collision.collider.gameObject.CompareTag("Weeds"))
+		{
+			isInTheWeeds = false;
+		}
+    }
 
 	public void Accelerate (bool isPedalDown = false, bool isReverse = false) {
 
 		float jerk = 0;
+		float maxAcceleration = maxAccelerationMagnitude;
+		float maxSpeed = maxSpeedMagnitude;
+
+		if (isInTheWeeds) {
+			maxAcceleration /= 2;
+			maxSpeed /= 2;
+		}
+
 		if (isPedalDown)
 		{
 			jerk = jerkMagnitude;
 			if (isReverse) jerk *= -1;
 
 
-            if (acceleration + jerk > maxAccelerationMagnitude)
-                    acceleration = maxAccelerationMagnitude;
-                else if (acceleration + jerk < (maxAccelerationMagnitude * -1))
-                    acceleration = maxAccelerationMagnitude * -1;
-                else acceleration += jerk;
+			if (acceleration + jerk > maxAcceleration)
+				acceleration = maxAcceleration;
+			else if (acceleration + jerk < (maxAcceleration * -1))
+				acceleration = maxAcceleration * -1;
+            else acceleration += jerk;
 		}
 		else {
 			if (speed < 0)
-				acceleration = maxAccelerationMagnitude * 10; // speed up
+				acceleration = maxAcceleration * 10; // speed up
 			else 
-				acceleration = maxAccelerationMagnitude * -1000; // slow down
+				acceleration = maxAcceleration * -1000; // slow down
 		}
 
        
-        if (speed + acceleration > maxSpeedMagnitude)
-            speed = maxSpeedMagnitude;      
+		if (speed + acceleration > maxSpeed)
+			speed = maxSpeed;      
         else if (speed + acceleration <= 0 && speed >= 0 && !isPedalDown) {
             speed = 0;
             acceleration = 0;
@@ -66,8 +94,8 @@ public class CarBehavior : MonoBehaviour {
 			speed = 0;
 			acceleration = 0;
 		}
-        else if (speed + acceleration < (maxSpeedMagnitude * -1))
-            speed = maxSpeedMagnitude * -1;
+		else if (speed + acceleration < (maxSpeed * -1))
+			speed = maxSpeed * -1;
         else speed += acceleration;
   
 	}

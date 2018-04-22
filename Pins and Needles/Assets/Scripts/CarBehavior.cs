@@ -7,7 +7,7 @@ public class CarBehavior : MonoBehaviour {
 	public float maxSpeedMagnitude = 30f;
 	public float maxAccelerationMagnitude = 3f;
 	public float jerkMagnitude = 0.5f;
-	public float turnRate = 10;
+	public float turnRate = 10f;
 
 	private float speed;
 	private float acceleration;
@@ -22,8 +22,11 @@ public class CarBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Transform>().Translate(Vector3.forward * speed * Time.deltaTime);
 		GetComponent<Transform>().Rotate(new Vector3(0, 1, 0), turnRate * horizontalAxis * Time.deltaTime);
+	}
+	private void FixedUpdate()
+	{      
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * acceleration * GetComponent<Rigidbody>().mass);
 	}
 
 	public void Accelerate (bool isPedalDown = false, bool isReverse = false) {
@@ -43,9 +46,9 @@ public class CarBehavior : MonoBehaviour {
 		}
 		else {
 			if (speed < 0)
-				acceleration = maxAccelerationMagnitude * 0.5f; // speed up slowly
+				acceleration = maxAccelerationMagnitude * 10; // speed up
 			else 
-				acceleration = maxAccelerationMagnitude * -1 * 0.5f; // slow down slowly
+				acceleration = maxAccelerationMagnitude * -1000; // slow down
 		}
 
        

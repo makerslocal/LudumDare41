@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour {
 
 	public GameObject MapFragment;
+	public GameObject PinSetup;
 
 	double[] segmentOffsets = {
 		0.0,
@@ -55,11 +56,15 @@ public class LevelGenerator : MonoBehaviour {
 			fragment.GetComponent<Transform> ().parent = GameObject.Find("Structure").GetComponent<Transform>();
 			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
 		}
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 15; i++) {
 			GameObject fragment = Instantiate (MapFragment, new Vector3 ((float) (segmentOffsets [segmentOffsets.Length - 1]), 0, nextZPos), Quaternion.identity);
 			fragment.GetComponent<Transform> ().parent = GameObject.Find ("Structure").GetComponent<Transform> ();
 			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
 		}
+
+		GameObject pins = Instantiate (PinSetup, new Vector3 ((float)(segmentOffsets [segmentOffsets.Length - 1]), (float)9.60, nextZPos-50), Quaternion.identity); //XXX hokey hardcoding
+		pins.GetComponent<Transform> ().parent = GameObject.Find ("Units").GetComponent<Transform> ();
+
 	}
 	
 	// Update is called once per frame

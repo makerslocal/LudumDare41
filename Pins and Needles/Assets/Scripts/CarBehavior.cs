@@ -30,7 +30,7 @@ public class CarBehavior : MonoBehaviour {
 	}
 	private void FixedUpdate()
 	{      
-        rb.AddRelativeForce(Vector3.forward * acceleration * rb.mass);
+		rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
 	}
 
 	public void Accelerate (bool isPedalDown = false, bool isReverse = false) {

@@ -840,7 +840,7 @@ MonoBehaviour:
   maxSpeedMagnitude: 500
   maxAccelerationMagnitude: 50
   jerkMagnitude: 20
-  turnRate: 40
+  turnRate: 80
 --- !u!54 &1571693380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -849,7 +849,7 @@ Rigidbody:
   m_GameObject: {fileID: 1571693376}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0

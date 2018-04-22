@@ -34,12 +34,17 @@ public class GameController : MonoBehaviour {
 		else {
 			postraceTime = Time.timeSinceLevelLoad - raceTime;
 			if (postraceTime > timeAfterGame) {
-				Score();
+				GetScore();
 			}
 		}
 	}
 
-	void Score () {
-		
+	float GetScore () {
+		int pinsDown = 0;
+		foreach(GameObject pin in GameObject.FindGameObjectsWithTag("Pin"))
+			if (pin.GetComponent<PinBehavior>().IsStanding())
+				pinsDown++;
+
+		return Mathf.Max(raceTime - pinsDown, 0);
 	}
 }

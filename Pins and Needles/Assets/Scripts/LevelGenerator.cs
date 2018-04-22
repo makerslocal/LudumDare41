@@ -6,6 +6,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	public GameObject MapFragment;
 	public GameObject PinSetup;
+	public GameObject Bumper;
 
 	double[] segmentOffsets = {
 		0.0,
@@ -51,17 +52,43 @@ public class LevelGenerator : MonoBehaviour {
 
 		float nextZPos = 0;
 
+		//Load in the actual road pattern from the array
 		foreach (float offset in segmentOffsets) {
 			GameObject fragment = Instantiate (MapFragment, new Vector3 (offset, 0, nextZPos), Quaternion.identity);
 			fragment.GetComponent<Transform> ().parent = GameObject.Find("Structure").GetComponent<Transform>();
 			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
 		}
+
+		//Generate our bowling lane, which is just a straight runway riffing off the end segment position
+		float laneX = (float) (segmentOffsets [segmentOffsets.Length - 1]);
 		for (int i = 0; i < 15; i++) {
-			GameObject fragment = Instantiate (MapFragment, new Vector3 ((float) (segmentOffsets [segmentOffsets.Length - 1]), 0, nextZPos), Quaternion.identity);
+			GameObject fragment = Instantiate (MapFragment, new Vector3 (laneX, 0, nextZPos), Quaternion.identity);
 			fragment.GetComponent<Transform> ().parent = GameObject.Find ("Structure").GetComponent<Transform> ();
-			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
+
+			Vector3 fragmentPos = fragment.GetComponent<Transform> ().position;
+			float bumperOffset = fragment.GetComponent<MapFragmentBehavior> ().roadWidth / 2;
+			float fragmentDepth = fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
+
+			GameObject leftBumper = Instantiate (
+				Bumper,
+				new Vector3 (fragmentPos.x - bumperOffset, fragmentPos.y + 1, nextZPos),
+				Quaternion.identity
+			);
+			leftBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 10, fragmentDepth);
+			leftBumper.GetComponent<Transform> ().parent = fragment.GetComponent<Transform>();
+
+			GameObject rightBumper = Instantiate (
+				Bumper,
+				new Vector3 (fragmentPos.x + bumperOffset, fragmentPos.y + 1, nextZPos),
+				Quaternion.identity
+			);
+			rightBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 10, fragmentDepth); //XXX hardcoding of bumper sizing
+			rightBumper.GetComponent<Transform> ().parent = fragment.GetComponent<Transform>();
+
+			nextZPos += fragmentDepth;
 		}
 
+		//Finally place the pins
 		GameObject pins = Instantiate (PinSetup, new Vector3 ((float)(segmentOffsets [segmentOffsets.Length - 1]), (float)9.60, nextZPos-50), Quaternion.identity); //XXX hokey hardcoding
 		pins.GetComponent<Transform> ().parent = GameObject.Find ("Units").GetComponent<Transform> ();
 

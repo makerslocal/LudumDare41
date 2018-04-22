@@ -7,7 +7,7 @@ public class CarBehavior : MonoBehaviour {
 	public float maxSpeedMagnitude = 30f;
 	public float maxAccelerationMagnitude = 3f;
 	public float jerkMagnitude = 0.5f;
-	public float turnRate = 0.5f;
+	public float turnRate = 10;
 
 	private float speed;
 	private float acceleration;
@@ -66,6 +66,6 @@ public class CarBehavior : MonoBehaviour {
 	}
 
 	public void Turn (float horizontalAxis) {
-		horizontalAxis = horizontalAxis;
+		this.horizontalAxis = horizontalAxis;
 	}
 }

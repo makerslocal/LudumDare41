@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weeds
+  - Pin
   layers:
   - Default
   - TransparentFX

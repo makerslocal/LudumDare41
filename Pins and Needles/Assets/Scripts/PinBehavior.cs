@@ -19,7 +19,10 @@ public class PinBehavior : MonoBehaviour {
 	}
 
 	public bool IsStanding () {
-		return (GetComponent<Transform>().rotation.x >= -90 + FALL_ANGLE 
-		        || GetComponent<Transform>().rotation.x <= -90 - FALL_ANGLE);
+		//Debug.Log (GetComponent<Transform> ().eulerAngles.x);
+		return ! (GetComponent<Transform>().eulerAngles.x >= 270 + FALL_ANGLE 
+		        || GetComponent<Transform>().eulerAngles.x <= 270 - FALL_ANGLE);
 	}   
+
+
 }

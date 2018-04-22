@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour {
 
 	public void showEndGameStuff() {
 
+		Debug.Log ("The end game stuff will be shown");
 		scoreText.enabled = true;
 
 	}

@@ -14,6 +14,9 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// TODO: Make this actually input-dependent
-		car.Accelerate();
+		car.Accelerate(
+			isPedalDown: Input.GetKey("w") || Input.GetKey("up") || Input.GetKey("s") || Input.GetKey("down"),
+			isReverse: Input.GetKey("s") || Input.GetKey("down")
+		);
 	}
 }

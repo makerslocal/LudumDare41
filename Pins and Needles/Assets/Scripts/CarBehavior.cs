@@ -22,22 +22,42 @@ public class CarBehavior : MonoBehaviour {
 		GetComponent<Transform>().Translate(Vector3.forward * speed * Time.deltaTime);
 	}
 
-	public void Accelerate (bool isReverse = false) {
+	public void Accelerate (bool isPedalDown = false, bool isReverse = false) {
 
-		float jerk = jerkMagnitude;
-		if (isReverse) jerk *= -1;
+		float jerk = 0;
+		if (isPedalDown)
+		{
+			jerk = jerkMagnitude;
+			if (isReverse) jerk *= -1;
 
-        if (acceleration + jerk > maxAccelerationMagnitude)
-            acceleration = maxAccelerationMagnitude;
-		else if (acceleration + jerk < (maxAccelerationMagnitude * -1))
-			acceleration = maxAccelerationMagnitude * -1;
-        else acceleration += jerk;
 
-		if (speed + acceleration > maxSpeedMagnitude)
-			speed = maxSpeedMagnitude;
-		else if (speed + acceleration < (maxSpeedMagnitude * -1))
-			speed = maxSpeedMagnitude * -1;
-		else speed += acceleration;
+            if (acceleration + jerk > maxAccelerationMagnitude)
+                    acceleration = maxAccelerationMagnitude;
+                else if (acceleration + jerk < (maxAccelerationMagnitude * -1))
+                    acceleration = maxAccelerationMagnitude * -1;
+                else acceleration += jerk;
+		}
+		else {
+			if (speed < 0)
+				acceleration = maxAccelerationMagnitude * 0.5f; // speed up slowly
+			else 
+				acceleration = maxAccelerationMagnitude * -1 * 0.5f; // slow down slowly
+		}
 
+       
+        if (speed + acceleration > maxSpeedMagnitude)
+            speed = maxSpeedMagnitude;      
+        else if (speed + acceleration < 0 && speed > 0 && !isPedalDown) {
+            speed = 0;
+            acceleration = 0;
+        }
+		else if (speed + acceleration > 0 && speed < 0 && !isPedalDown) {
+			speed = 0;
+			acceleration = 0;
+		}
+        else if (speed + acceleration < (maxSpeedMagnitude * -1))
+            speed = maxSpeedMagnitude * -1;
+        else speed += acceleration;
+  
 	}
 }

@@ -68,4 +68,8 @@ public class CarBehavior : MonoBehaviour {
 	public void Turn (float horizontalAxis) {
 		this.horizontalAxis = horizontalAxis;
 	}
+
+	void OnTriggerEnter(Collider other) {
+		Destroy (other.gameObject);
+	}
 }

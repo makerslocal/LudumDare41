@@ -65,7 +65,7 @@ public class LevelGenerator : MonoBehaviour {
 		float laneX = (float) (segmentOffsets [segmentOffsets.Length - 1]);
 
 		//Add the ball
-		GameObject ball = Instantiate(Ball, new Vector3(laneX, 2, nextZPos), Quaternion.identity);
+		GameObject ball = Instantiate(Ball, new Vector3(laneX, 6, nextZPos), Quaternion.identity);
 		ball.GetComponent<Transform> ().parent = GameObject.Find ("Units").GetComponent<Transform> ();
 			
 		//Add the lane floor

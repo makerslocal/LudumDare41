@@ -20,6 +20,15 @@ public class GameController : MonoBehaviour {
 		raceTime = 0f;
 		postraceTime = 0f;
 		isRaceCompleted = false;
+
+		Time.timeScale = 1.75f;
+	}
+
+	string timeToScaledTimerText(float time) {
+		float time2 = time / Time.timeScale;
+		return "" + ((int)(time2 / 60f)).ToString().PadLeft(2, '0')
+			+ "\'" + ((int)(time2 % 60)).ToString().PadLeft(2, '0')
+			+ "\"" + ((int)((time2 * 100) % 100)).ToString().PadLeft(2, '0');
 	}
 
 	// Update is called once per frame
@@ -27,9 +36,8 @@ public class GameController : MonoBehaviour {
 		if (!isRaceCompleted)
 		{
 			raceTime = Time.timeSinceLevelLoad;
-			timerText.text = "" + (int)(raceTime / 60f)
-				+ "\'" + (int)(raceTime % 60)
-				+ "\"" + (int)((raceTime * 100) % 100);
+			timerText.text = timeToScaledTimerText(raceTime);
+
 		}
 		else {
 			postraceTime = Time.timeSinceLevelLoad - raceTime;
@@ -41,5 +49,11 @@ public class GameController : MonoBehaviour {
 
 	void Score () {
 		
+	}
+
+	public void showEndGameStuff() {
+
+		scoreText.enabled = true;
+
 	}
 }

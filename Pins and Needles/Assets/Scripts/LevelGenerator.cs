@@ -50,17 +50,16 @@ public class LevelGenerator : MonoBehaviour {
 
 		float nextZPos = 0;
 
-		//TODO: Loop through to create the level.
 		foreach (float offset in segmentOffsets) {
-			GameObject fragment = Instantiate (
-				                      MapFragment,
-				                      new Vector3 (offset, 0, nextZPos),
-				                      Quaternion.identity
-			                      );
+			GameObject fragment = Instantiate (MapFragment, new Vector3 (offset, 0, nextZPos), Quaternion.identity);
 			fragment.GetComponent<Transform> ().parent = GameObject.Find("Structure").GetComponent<Transform>();
 			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
 		}
-
+		for (int i = 0; i < 10; i++) {
+			GameObject fragment = Instantiate (MapFragment, new Vector3 ((float) (segmentOffsets [segmentOffsets.Length - 1]), 0, nextZPos), Quaternion.identity);
+			fragment.GetComponent<Transform> ().parent = GameObject.Find ("Structure").GetComponent<Transform> ();
+			nextZPos += fragment.GetComponent<MapFragmentBehavior> ().segmentDepth;
+		}
 	}
 	
 	// Update is called once per frame

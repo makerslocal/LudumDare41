@@ -13,20 +13,24 @@ public class CarBehavior : MonoBehaviour {
 	private float acceleration;
 	private float horizontalAxis;
 
+	private Rigidbody rb;
+
 	// Use this for initialization
 	void Start () {
 		speed = 0f;
 		acceleration = 0f;
 		horizontalAxis = 0f;
+
+		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Transform>().Rotate(new Vector3(0, 1, 0), turnRate * horizontalAxis * Time.deltaTime);
+		transform.Rotate(new Vector3(0, 1, 0), turnRate * horizontalAxis * Time.deltaTime);
 	}
 	private void FixedUpdate()
 	{      
-        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * acceleration * GetComponent<Rigidbody>().mass);
+        rb.AddRelativeForce(Vector3.forward * acceleration * rb.mass);
 	}
 
 	public void Accelerate (bool isPedalDown = false, bool isReverse = false) {

@@ -15,6 +15,6 @@ public class PlayerCameraBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		GetComponent<Transform>().position = player.position + offset;
+		//GetComponent<Transform>().position = player.position + offset;
 	}
 }

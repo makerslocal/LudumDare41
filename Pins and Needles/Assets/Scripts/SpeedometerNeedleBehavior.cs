@@ -15,7 +15,6 @@ public class SpeedometerNeedleBehavior : MonoBehaviour {
 	void Update () {
 		Vector3 butt = Car.GetComponent<Rigidbody> ().velocity;
 		float speed = Mathf.Abs (butt.x) + Mathf.Abs (butt.z); //Mathf.Abs (butt.y) + 
-		Debug.Log (speed);
 
 		speed -= 10; //The 0mph mark is a little left of 0 degrees
 		if ( speed > 265 ) speed = 265;

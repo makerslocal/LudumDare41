@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65926477761869304}
   - component: {fileID: 23289784312771532}
   - component: {fileID: 54990803017252334}
+  - component: {fileID: 114168199332834968}
   m_Layer: 0
   m_Name: Bumper
   m_TagString: Untagged
@@ -109,3 +110,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114168199332834968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334835345871602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de51784067775426c9ada9e41c533790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumBounceMagnitude: 5
+  minimumBounceCorrectionMultiplier: 100

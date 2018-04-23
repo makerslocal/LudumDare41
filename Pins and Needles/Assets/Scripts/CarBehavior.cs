@@ -14,6 +14,8 @@ public class CarBehavior : MonoBehaviour {
 	private float horizontalAxis;
 	private bool isInTheWeeds;
 
+	public Vector3 velocity;
+
 	private Rigidbody rb;
 
 	// Use this for initialization
@@ -25,6 +27,7 @@ public class CarBehavior : MonoBehaviour {
 		isInTheWeeds = false;
 
 		rb = GetComponent<Rigidbody>();
+		velocity = rb.velocity;
 	}
 	
 	// Update is called once per frame
@@ -37,6 +40,8 @@ public class CarBehavior : MonoBehaviour {
 
 		if (rb.velocity.magnitude > maxSpeedMagnitude)
 			rb.velocity = rb.velocity.normalized * maxSpeedMagnitude;
+
+        velocity = rb.velocity;
 	}
 
     private void OnCollisionEnter(Collision collision)

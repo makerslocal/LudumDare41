@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weeds
   - Ball
+  - Pin
   layers:
   - Default
   - TransparentFX

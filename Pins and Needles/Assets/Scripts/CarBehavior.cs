@@ -111,6 +111,6 @@ public class CarBehavior : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		//Destroy (other.gameObject);
-		GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().showEndGameStuff();
+		StartCoroutine(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().EndGame());
 	}
 }

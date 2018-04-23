@@ -6,6 +6,7 @@ public class PinBehavior : MonoBehaviour {
 
 	private const int FALL_ANGLE = 11;
 	private GameController gameController;
+	private bool HasEverFallen = false;
 
 	private void Awake()
 	{
@@ -19,10 +20,18 @@ public class PinBehavior : MonoBehaviour {
 	}
 
 	public bool IsStanding () {
+		if (HasEverFallen)
+			return false;
 		//Debug.Log (GetComponent<Transform> ().eulerAngles.x);
 		return ! (GetComponent<Transform>().eulerAngles.x >= 270 + FALL_ANGLE 
 		        || GetComponent<Transform>().eulerAngles.x <= 270 - FALL_ANGLE);
 	}   
+
+	void Update() {
+		if ( ! IsStanding() ) {
+			HasEverFallen = true;
+		}
+	}
 
 
 }

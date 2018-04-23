@@ -69,7 +69,7 @@ public class CarBehavior : MonoBehaviour {
 
 		if (isInTheWeeds) {
 			maxAcceleration /= 2;
-			maxSpeed /= 2;
+			maxSpeed /= 4;
 		}
 
 		if (isPedalDown)

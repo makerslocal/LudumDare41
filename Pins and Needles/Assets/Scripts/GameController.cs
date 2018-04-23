@@ -70,7 +70,6 @@ public class GameController : MonoBehaviour {
 
 		GameObject.Find ("Car").GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
 		GameObject.Find("RollSound").GetComponent<AudioSource>().Play();
-		GameObject.Find ("Main Camera").GetComponent<Transform> ().SetParent(GameObject.FindGameObjectWithTag ("Ball").GetComponent<Transform> ());
 
 		isRaceCompleted = true;
 

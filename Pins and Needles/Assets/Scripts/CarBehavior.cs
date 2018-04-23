@@ -35,8 +35,11 @@ public class CarBehavior : MonoBehaviour {
 		transform.Rotate(new Vector3(0, 1, 0), turnRate * horizontalAxis * Time.deltaTime);
 	}
 	private void FixedUpdate()
-	{      
-		rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
+	{   
+		// the mass was originally 100, and we balanced things around that, so 
+        // this will keep things in check if we shift the mass
+		rb.AddRelativeForce(Vector3.forward * speed * (rb.mass / 100), ForceMode.Impulse);
+        
 
 		if (rb.velocity.magnitude > maxSpeedMagnitude)
 			rb.velocity = rb.velocity.normalized * maxSpeedMagnitude;

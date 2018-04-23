@@ -22,4 +22,17 @@ public class PinSetupBehavior : MonoBehaviour {
 			}
 		}
 	}
+
+	private void OnTriggerEnter(Collider other)
+    {
+		
+        if (other.transform.parent.parent.gameObject.CompareTag("Player"))
+        {
+            other.transform.parent.SetPositionAndRotation(
+                new Vector3(-26f, 1.5f, 2200),
+                Quaternion.identity
+            );
+			other.transform.parent.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
 }

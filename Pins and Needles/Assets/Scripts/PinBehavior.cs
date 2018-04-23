@@ -11,12 +11,6 @@ public class PinBehavior : MonoBehaviour {
 	{
 		gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(!gameController.isRaceCompleted && collision.transform.gameObject.CompareTag("Player")) {
-			gameController.isRaceCompleted = true;
-		}
-	}
 
 	public bool IsStanding () {
 		//Debug.Log (GetComponent<Transform> ().eulerAngles.x);

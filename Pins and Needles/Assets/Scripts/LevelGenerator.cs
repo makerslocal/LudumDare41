@@ -169,18 +169,18 @@ public class LevelGenerator : MonoBehaviour {
 
 			GameObject leftBumper = Instantiate (
 				Bumper,
-				new Vector3 (fragmentPos.x - bumperOffset, fragmentPos.y + 1, nextZPos),
+				new Vector3 (fragmentPos.x - bumperOffset, fragmentPos.y + 15, nextZPos),
 				Quaternion.identity
 			);
-			leftBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 10, fragmentDepth);
+			leftBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 30, fragmentDepth);
 			leftBumper.GetComponent<Transform> ().parent = fragment.GetComponent<Transform>();
 
 			GameObject rightBumper = Instantiate (
 				Bumper,
-				new Vector3 (fragmentPos.x + bumperOffset, fragmentPos.y + 1, nextZPos),
+				new Vector3 (fragmentPos.x + bumperOffset, fragmentPos.y + 15, nextZPos),
 				Quaternion.identity
 			);
-			rightBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 10, fragmentDepth); //XXX hardcoding of bumper sizing
+			rightBumper.GetComponent<Transform> ().localScale = new Vector3 (2, 30, fragmentDepth); //XXX hardcoding of bumper sizing
 			rightBumper.GetComponent<Transform> ().parent = fragment.GetComponent<Transform>();
 
 			nextZPos += fragmentDepth;

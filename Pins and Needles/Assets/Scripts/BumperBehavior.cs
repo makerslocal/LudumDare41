@@ -16,7 +16,7 @@ public class BumperBehavior : MonoBehaviour {
 			bouncedVelocity = collision.gameObject.GetComponent<CarBehavior>().velocity;
 		}
 		else if (collision.gameObject.CompareTag("Ball")){
-			bouncedVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity;
+			bouncedVelocity = GameObject.FindWithTag("Ball").GetComponent<Rigidbody>().velocity;
 		}
 		Vector3 contactPoint = collision.contacts[0].normal;
 		if(bouncedVelocity != Vector3.zero){
@@ -56,7 +56,7 @@ public class BumperBehavior : MonoBehaviour {
 			}
 
 			bouncee.AddForceAtPosition(
-				force: bouncedVelocity * 10,
+				force: bouncedVelocity,
 				position: contactPoint,
 				mode: ForceMode.Impulse
 			);

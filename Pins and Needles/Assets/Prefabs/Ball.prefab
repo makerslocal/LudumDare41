@@ -20,11 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4062232787737050}
   - component: {fileID: 33873089125023520}
-  - component: {fileID: 135532451213995330}
   - component: {fileID: 23707372362846624}
   - component: {fileID: 54741689946573790}
-  - component: {fileID: 65709027006552650}
   - component: {fileID: 65539408277175116}
+  - component: {fileID: 65914996811521854}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669345022771518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 1, z: 800}
+  m_LocalPosition: {x: 22.073196, y: 19.53855, z: 2527.6897}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,8 +96,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
+  m_Constraints: 4
+  m_CollisionDetection: 1
 --- !u!65 &65539408277175116
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -111,7 +110,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65709027006552650
+--- !u!65 &65914996811521854
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,16 +121,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135532451213995330
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1669345022771518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.02, z: 0}

@@ -304,5 +304,5 @@ MonoBehaviour:
   rightWeeds: {fileID: 1613018619278958}
   road: {fileID: 1496157444598232}
   weedWidth: 200
-  roadWidth: 40
+  roadWidth: 60
   segmentDepth: 20

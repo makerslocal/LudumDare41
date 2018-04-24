@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour {
 	public float timeAfterGame;
 	public Text timerText;
 	public Text scoreText;
+	public GameObject InputField;
+	public float Score;
     
 	// Use this for initialization
 	void Start () {
@@ -84,14 +86,16 @@ public class GameController : MonoBehaviour {
 		scoreText.text = "Your time: " + TimeToText(ScaleTime( (raceTime))) + "\n" +
 						"Bonus Time for " + GetPinsDown () + " pins down: " + TimeToText(((float)GetPinsDown ())) + "\n" +
 						"FINAL SCORE: " + TimeToText((GetScore ()));
+
+		Score = GetScore (); //for the leaderboard
 		
 
 		scoreText.enabled = true;
+		InputField.SetActive (true);
 		Time.timeScale = 0f;
 
-		yield return new WaitForSecondsRealtime (5f);
-
-		SceneManager.LoadScene ("prototype-001");
+		//yield return new WaitForSecondsRealtime (5f);
+		//SceneManager.LoadScene ("prototype-001");
 
 	}
 }

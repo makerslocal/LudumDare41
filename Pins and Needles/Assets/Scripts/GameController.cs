@@ -50,6 +50,10 @@ public class GameController : MonoBehaviour {
 				GetScore();
 			}
 		}
+
+		if (Input.GetKeyUp(KeyCode.Escape)) {
+			SceneManager.LoadScene(0);
+		}
 	}
 
 	int GetPinsDown () {
@@ -85,7 +89,8 @@ public class GameController : MonoBehaviour {
 
 		scoreText.text = "Your time: " + TimeToText(ScaleTime( (raceTime))) + "\n" +
 						"Bonus Time for " + GetPinsDown () + " pins down: " + TimeToText(((float)GetPinsDown ())) + "\n" +
-						"FINAL SCORE: " + TimeToText((GetScore ()));
+						"FINAL SCORE: " + TimeToText((GetScore ())) + "\n" +
+			            "Press <Esc> to restart";
 
 		Score = GetScore (); //for the leaderboard
 		
